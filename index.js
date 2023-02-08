@@ -148,7 +148,7 @@ async function handleRequest(request) {
   console.log(path)
   if(!path){
 
-    const html= await fetch("https://github.com/ntaheij/URL-Shorten-Worker"+config.theme+"/index.html")
+    const html= await fetch("https://ntaheij.github.io/URL-Shorten-Worker"+config.theme+"/index.html")
     
     return new Response(await html.text(), {
     headers: {
@@ -171,7 +171,7 @@ async function handleRequest(request) {
   if (location) {
     if (config.safe_browsing_api_key){
       if(!(await is_url_safe(location))){
-        let warning_page = await fetch("https://github.com/ntaheij/URL-Shorten-Worker/safe-browsing.html")
+        let warning_page = await fetch("https://ntaheij.github.io/URL-Shorten-Worker/safe-browsing.html")
         warning_page =await warning_page.text()
         warning_page = warning_page.replace(/{Replace}/gm, location)
         return new Response(warning_page, {
@@ -182,7 +182,7 @@ async function handleRequest(request) {
       }
     }
     if (config.no_ref=="on"){
-      let no_ref= await fetch("https://github.com/ntaheij/URL-Shorten-Worker/no-ref.html")
+      let no_ref= await fetch("https://ntaheij.github.io/URL-Shorten-Worker/no-ref.html")
       no_ref=await no_ref.text()
       no_ref=no_ref.replace(/{Replace}/gm, location)
       return new Response(no_ref, {
